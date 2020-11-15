@@ -1,10 +1,9 @@
 import React from 'react';
-import { Jumbotron } from 'react-bootstrap';
-import MainNavbar from './Components/Shared/MainNavbar/MainNavbar';
+import Main from './Pages/Main';
 function App() {
   return (
     <>
-      <MainNavbar />
+      <Main />
     </>
   );
 }
