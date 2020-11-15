@@ -6,7 +6,7 @@ const PageHome = () => {
     return (
         <>
             <Jumbotron>
-                <h2 className="text-center">Home Page</h2>
+                <h2 className="text-center">HomePage</h2>
             </Jumbotron>
         </>
     );
