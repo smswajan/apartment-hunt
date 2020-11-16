@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardNavbar from '../../Components/Dashboard/DashboardNavbar/DashboardNavbar';
 import adminSidebarItems from '../../Components/Dashboard/DashboardSidebar/adminSidebarData';
 import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar/DashboardSidebar';
+import SectionSpinner from '../../Components/SectionSpinner/SectionSpinner';
+import { useAuth } from '../../Hooks/useAuth';
 
 const DashboardBookingList = () => {
+    const [bookings, setBookings] = useState([]);
+    // const { currentUser } = useAuth();
+    const [isAdmin, setIsAdmin] = useState(true);
+    const [loading, setLoading] = useState(false);
     const sideBarItems = adminSidebarItems;
     sideBarItems[0].status = " active";
+
     return (
         <>
             <DashboardNavbar pageTitle="Booking List" />

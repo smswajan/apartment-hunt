@@ -14,13 +14,12 @@ const adminSidebarItems = [
         icon: serviceList,
         text: "Booking list",
         url: "/dashboard/booking-list",
-        status: " active"
     },
     {
         id: 2,
         icon: addService,
         text: "Add House",
-        url: "/dashboard/add-house",
+        url: "/dashboard/add-apartment",
 
     },
     {
