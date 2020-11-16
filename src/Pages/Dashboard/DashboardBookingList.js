@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardNavbar from '../../Components/Dashboard/DashboardNavbar/DashboardNavbar';
 import adminSidebarItems from '../../Components/Dashboard/DashboardSidebar/adminSidebarData';
 import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar/DashboardSidebar';
@@ -12,6 +12,33 @@ const DashboardBookingList = () => {
     const [loading, setLoading] = useState(false);
     const sideBarItems = adminSidebarItems;
     sideBarItems[0].status = " active";
+    // useEffect(() => {
+    //     if (currentUser) {
+    //         setLoading(true)
+    //         fetch('https://creative-agency-live-api.herokuapp.com/is-admin', {
+    //             method: "POST",
+    //             headers: { 'Content-type': 'application/json' },
+    //             body: JSON.stringify({ email: currentUser.email })
+    //         })
+    //             .then(res => res.json())
+    //             .then(data => {
+    //                 setIsAdmin(data)
+    //                 setLoading(false)
+    //             })
+    //     }
+    // }, [])
+    useEffect(() => {
+        if (isAdmin) {
+            setLoading(true);
+            fetch('http://localhost:4000/bookings', { method: 'GET' })
+                .then(response => response.json())
+                .then(result => {
+                    setBookings(result);
+                    setLoading(false)
+                })
+        }
+
+    }, [])
 
     return (
         <>

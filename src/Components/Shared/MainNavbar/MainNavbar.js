@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { BrandLogo } from '../../../images';
 import "./MainNavbar.scss"
 
@@ -18,7 +19,7 @@ const MainNavbar = () => {
                             <Nav.Link href="/home-details" className="navbar-link-item mr-3" >Single Home Details</Nav.Link>
                             {/* <Nav.Link href="/services" className="navbar-link-item mr-3" >My Services</Nav.Link>
                             <Nav.Link href="/reviews" className="navbar-link-item mr-3" >Add Review</Nav.Link> */}
-                            <Button href="/admin/service-list" className="px-4 mr-3">Admin</Button>
+                            <Link to="/dashboard/" className="btn btn-primary px-4 mr-3">Admin</Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

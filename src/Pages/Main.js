@@ -21,6 +21,9 @@ const Main = () => {
                             <PageHomeDetails />
                         </Route>
                         {/* Dashboard */}
+                        <Route exact path="/dashboard">
+                            <DashboardBookingList />
+                        </Route>
                         <Route exact path="/dashboard/booking-list">
                             <DashboardBookingList />
                         </Route>
