@@ -1,12 +1,12 @@
 import React from 'react';
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+// import { UserContext } from '../../App';
 import { useAuth } from '../../Hooks/useAuth';
 import { LogoBrand } from '../../images';
 import "./DashboardNavbar.scss"
 import Avatar from 'react-avatar';
 
-const AdminNavbar = ({ pageTitle }) => {
+const DashboardNavbar = ({ pageTitle }) => {
     const { currentUser } = useAuth();
 
     return (
@@ -27,4 +27,4 @@ const AdminNavbar = ({ pageTitle }) => {
     );
 };
 
-export default AdminNavbar;
+export default DashboardNavbar;

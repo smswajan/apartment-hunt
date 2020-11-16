@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainNavbar from '../Components/Shared/MainNavbar/MainNavbar';
+import DashboardBookingList from './Dashboard/DashboardBookingList';
 import PageHome from './PageHome/PageHome';
 import PageHomeDetails from './PageHomeDetails/PageHomeDetails';
 
@@ -16,6 +17,10 @@ const Main = () => {
                         </Route>
                         <Route exact path="/home-details">
                             <PageHomeDetails />
+                        </Route>
+                        {/* Dashboard */}
+                        <Route exact path="/dashboard">
+                            <DashboardBookingList />
                         </Route>
                     </Switch>
                 </main>

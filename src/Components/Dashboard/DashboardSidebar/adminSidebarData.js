@@ -12,21 +12,22 @@ const adminSidebarItems = [
     {
         id: 1,
         icon: serviceList,
-        text: "Service list",
-        url: "/admin/service-list",
+        text: "Booking list",
+        url: "/dashboard/booking-list",
+        status: " active"
     },
     {
         id: 2,
         icon: addService,
-        text: "Add Service",
-        url: "/admin/add-service",
+        text: "Add House",
+        url: "/dashboard/add-house",
 
     },
     {
         id: 3,
         icon: addAdmin,
-        text: "Make Admin",
-        url: "/admin/add-admin"
+        text: "My Rent",
+        url: "/dashboard/my-rent"
     },
 ]
 export default adminSidebarItems;
