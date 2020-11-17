@@ -7,6 +7,7 @@ const PageHome = () => {
         <>
             <Jumbotron>
                 <h2 className="text-center">HomePage</h2>
+                <h5 className="text-center">Test</h5>
             </Jumbotron>
         </>
     );
