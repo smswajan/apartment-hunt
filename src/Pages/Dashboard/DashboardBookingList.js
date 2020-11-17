@@ -11,7 +11,7 @@ const DashboardBookingList = () => {
     const [isAdmin, setIsAdmin] = useState(true);
     const [loading, setLoading] = useState(false);
     const sideBarItems = adminSidebarItems;
-    sideBarItems[0].status = " active";
+    // sideBarItems[0].status = " active";
     // useEffect(() => {
     //     if (currentUser) {
     //         setLoading(true)

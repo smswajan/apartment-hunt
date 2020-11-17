@@ -22,11 +22,11 @@ const adminSidebarItems = [
         url: "/dashboard/add-apartment",
 
     },
-    {
-        id: 3,
-        icon: addAdmin,
-        text: "My Rent",
-        url: "/dashboard/my-rent"
-    },
+    // {
+    //     id: 3,
+    //     icon: addAdmin,
+    //     text: "My Rent",
+    //     url: "/dashboard/my-rent"
+    // },
 ]
 export default adminSidebarItems;

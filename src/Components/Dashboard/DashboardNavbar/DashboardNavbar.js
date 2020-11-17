@@ -7,6 +7,7 @@ import Avatar from 'react-avatar';
 import { BrandLogo } from '../../../images';
 
 const DashboardNavbar = ({ pageTitle }) => {
+
     // const { currentUser } = useAuth();
     const currentUser = {
         name: "Swajan",

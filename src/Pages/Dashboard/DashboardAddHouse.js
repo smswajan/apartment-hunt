@@ -32,7 +32,7 @@ const DashboardAddHouse = () => {
     }, [])
     const serviceStorageRef = fireApp.storage().ref().child('apartments');
     const sideBarItems = adminSidebarItems;
-    sideBarItems[1].status = " active"
+    // sideBarItems[1].status = " active"
     const handleFormSubmit = (data, e) => {
         console.log(data);
         const iconFile = data.icon[0];
