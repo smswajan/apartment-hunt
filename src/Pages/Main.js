@@ -5,6 +5,7 @@ import DashboardAddHouse from './Dashboard/DashboardAddHouse';
 import DashboardBookingList from './Dashboard/DashboardBookingList';
 import PageHome from './PageHome/PageHome';
 import PageHomeDetails from './PageHomeDetails/PageHomeDetails';
+import PageMyBookings from './PageMyBookings/PageMyBookings';
 
 const Main = () => {
     return (
@@ -19,6 +20,10 @@ const Main = () => {
                         <Route exact path="/home-details">
                             <MainNavbar />
                             <PageHomeDetails />
+                        </Route>
+                        <Route exact path="/my-bookings">
+                            <MainNavbar />
+                            <PageMyBookings />
                         </Route>
                         {/* Dashboard */}
                         <Route exact path="/dashboard">
