@@ -12,7 +12,12 @@ export const fetchApartments = () => (dispatch) => {
         .then(apartments => dispatch(addApartments(apartments)))
         .catch(error => dispatch(apartmentsFailed(error.message)));
 }
-
+fetch('http://localhost:4000/apartments', { method: 'GET' })
+    .then(response => response.json())
+    .then(result => {
+        console.log(result);
+        return result
+    })
 
 export const apartmentsLoading = () => ({
     type: ActionTypes.APARTMENTS_LOADING

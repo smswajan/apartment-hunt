@@ -3,14 +3,14 @@ import * as ActionTypes from './ActionTypes';
 export const Apartments = (state = {
     isLoading: true,
     errMess: null,
-    dishes: []
+    apartments: []
 }, action) => {
     switch (action.type) {
         case ActionTypes.APARTMENTS_LOADING:
-            return { ...state, isLoading: true, errMess: null, dishes: [] };
+            return { ...state, isLoading: true, errMess: null, apartments: [] };
 
         case ActionTypes.APARTMENTS_FAILED:
-            return { ...state, isLoading: false, errMess: action.payload, dishes: [] };
+            return { ...state, isLoading: false, errMess: action.payload, apartments: [] };
 
         default:
             return state;

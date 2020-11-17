@@ -10,9 +10,7 @@ const PageHome = () => {
 
     return (
         <>
-            <Jumbotron>
-                <h2 className="text-center">HomePage</h2>
-            </Jumbotron>
+
         </>
     );
 };
