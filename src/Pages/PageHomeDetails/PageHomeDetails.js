@@ -5,13 +5,19 @@ import ImgAp from "./hero-bg01.png"
 import "./PageHomeDetails.scss"
 import { useForm } from 'react-hook-form';
 import { baseURL } from '../../shared/baseURL';
+import { useAuth } from '../../Hooks/useAuth';
 
 const PageHomeDetails = () => {
+    const { currentUser } = useAuth();
+    let userEmail;
+    if (currentUser) {
+        userEmail = currentUser.email;
+    }
     const { id } = useParams();
     const [houseDetails, setHouseDetails] = useState({});
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('http://localhost:4000/apartments', { method: 'GET' })
+        fetch('https://apartment-hunt-online.herokuapp.com/apartments', { method: 'GET' })
             .then(response => response.json())
             .then(result => {
                 const apartment = result.find(item => item._id === id);
@@ -59,9 +65,9 @@ const PageHomeDetails = () => {
                     </Col>}
                     <Col md="4" className="">
                         <form onSubmit={handleSubmit(handleFormSubmit)} className="py-5 bg-li p-4">
-                            <input name="fullName" type="text" className="form-control mb-3" placeholder="Full Name" ref={register({ required: true })} />
+                            <input name="fullName" defaultValue={currentUser.name} type="text" className="form-control mb-3" placeholder="Full Name" ref={register({ required: true })} />
                             <input name="phone" type="tel" className="form-control mb-3" placeholder="Phone No" ref={register({ required: true })} />
-                            <input name="email" type="email" className="form-control mb-3" placeholder="Email Address" ref={register({ required: true })} />
+                            <input name="email" disabled defaultValue={userEmail} type="email" className="form-control mb-3" placeholder="Email Address" ref={register({ required: true })} />
                             <textarea name="description" className="form-control mb-3" cols="30" rows="5" placeholder="Description" ref={register({ required: true })} ></textarea>
                             <button type="submit" className="btn btn-primary btn-block">Request Booking</button>
                         </form>

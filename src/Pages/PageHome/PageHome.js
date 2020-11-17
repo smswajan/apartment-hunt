@@ -11,7 +11,7 @@ const PageHome = () => {
     const [apartments, setApartments] = useState([]);
     const [loading, setLoading] = useState();
     useEffect(() => {
-        fetch('http://localhost:4000/apartments', { method: 'GET' })
+        fetch('https://apartment-hunt-online.herokuapp.com/apartments', { method: 'GET' })
             .then(response => response.json())
             .then(result => {
                 setApartments(result);

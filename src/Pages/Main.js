@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from '../Components/Shared/Footer/Footer';
 import MainNavbar from '../Components/Shared/MainNavbar/MainNavbar';
+import { PrivateRoute } from '../Hooks/useAuth';
+import ComingSoon from './ComingSoon/ComingSoon';
 import DashboardAddHouse from './Dashboard/DashboardAddHouse';
 import DashboardBookingList from './Dashboard/DashboardBookingList';
 import LoginPage from './LoginPage';
@@ -20,28 +22,31 @@ const Main = () => {
                             <PageHome />
                             <Footer />
                         </Route>
-                        <Route exact path="/apartments/:id">
+                        <PrivateRoute exact path="/apartments/:id">
                             <MainNavbar />
                             <PageHomeDetails />
                             <Footer />
-                        </Route>
-                        <Route exact path="/my-bookings">
-                            <MainNavbar />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/my-bookings">
                             <PageMyBookings />
-                            <Footer />
-                        </Route>
+                        </PrivateRoute>
                         {/* Dashboard */}
-                        <Route exact path="/dashboard">
+                        <PrivateRoute exact path="/dashboard">
                             <DashboardBookingList />
-                        </Route>
-                        <Route exact path="/dashboard/booking-list">
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/dashboard/booking-list">
                             <DashboardBookingList />
-                        </Route>
-                        <Route exact path="/dashboard/add-apartment">
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/dashboard/add-apartment">
                             <DashboardAddHouse />
-                        </Route>
+                        </PrivateRoute>
                         <Route exact path="/login">
                             <LoginPage />
+                        </Route>
+                        <Route path="*">
+                            <MainNavbar />
+                            <ComingSoon />
+                            <Footer />
                         </Route>
                     </Switch>
                 </main>

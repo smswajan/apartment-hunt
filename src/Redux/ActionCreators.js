@@ -4,7 +4,7 @@ import * as ActionTypes from './ActionTypes';
 
 export const fetchApartments = () => (dispatch) => {
     dispatch(apartmentsLoading(true));
-    return fetch('http://localhost:4000/apartments', { method: 'GET' })
+    return fetch('https://apartment-hunt-online.herokuapp.com/apartments', { method: 'GET' })
         .then(response => response.json())
         .then(result => {
             return result
@@ -12,7 +12,7 @@ export const fetchApartments = () => (dispatch) => {
         .then(apartments => dispatch(addApartments(apartments)))
         .catch(error => dispatch(apartmentsFailed(error.message)));
 }
-fetch('http://localhost:4000/apartments', { method: 'GET' })
+fetch('https://apartment-hunt-online.herokuapp.com/apartments', { method: 'GET' })
     .then(response => response.json())
     .then(result => {
         console.log(result);

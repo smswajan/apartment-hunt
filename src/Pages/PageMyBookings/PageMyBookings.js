@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
+import Footer from '../../Components/Shared/Footer/Footer';
+import MainNavbar from '../../Components/Shared/MainNavbar/MainNavbar';
 import BookingCard from './BookingCard';
 
 const PageMyBookings = () => {
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState();
     useEffect(() => {
-        fetch('http://localhost:4000/bookings', { method: 'GET' })
+        fetch('https://apartment-hunt-online.herokuapp.com/bookings', { method: 'GET' })
             .then(response => response.json())
             .then(result => {
                 setBookings(result);
@@ -16,7 +18,8 @@ const PageMyBookings = () => {
     }, [])
 
     return (
-        <div>
+        <>
+            <MainNavbar />
             <div className="hero-apartment">
                 <h2 className="text-center mb-0 text-white">My Bookings</h2>
             </div>
@@ -27,7 +30,8 @@ const PageMyBookings = () => {
                     </Row>
                 </Container>
             </section>
-        </div>
+            <Footer />
+        </>
     );
 };
 
