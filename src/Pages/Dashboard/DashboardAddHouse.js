@@ -7,6 +7,7 @@ import adminSidebarItems from '../../Components/Dashboard/DashboardSidebar/admin
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { IconContext } from 'react-icons/lib';
 import InputWrapper from '../../Components/Shared/InputWrapper';
+import { baseURL } from '../../shared/baseURL';
 
 const DashboardAddHouse = () => {
     const { register, handleSubmit } = useForm();
@@ -40,7 +41,7 @@ const DashboardAddHouse = () => {
         imgRef.put(iconFile).then(res => {
             imgRef.getDownloadURL().then(res => {
                 data.icon = res;
-                fetch('http://localhost:4000/add-house', {
+                fetch(`${baseURL}/add-house`, {
                     headers: { "Content-Type": "application/json" },
                     method: 'POST',
                     body: JSON.stringify(data)

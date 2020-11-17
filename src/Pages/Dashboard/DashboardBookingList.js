@@ -4,6 +4,7 @@ import adminSidebarItems from '../../Components/Dashboard/DashboardSidebar/admin
 import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar/DashboardSidebar';
 import SectionSpinner from '../../Components/SectionSpinner/SectionSpinner';
 import { useAuth } from '../../Hooks/useAuth';
+import { baseURL } from '../../shared/baseURL';
 
 const DashboardBookingList = () => {
     const [bookings, setBookings] = useState([]);
@@ -30,7 +31,7 @@ const DashboardBookingList = () => {
     useEffect(() => {
         if (isAdmin) {
             setLoading(true);
-            fetch('http://localhost:4000/bookings', { method: 'GET' })
+            fetch(`${baseURL}/bookings`, { method: 'GET' })
                 .then(response => response.json())
                 .then(result => {
                     setBookings(result);
