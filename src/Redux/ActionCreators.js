@@ -1,25 +1,18 @@
 import * as ActionTypes from './ActionTypes';
-import { auth, firestore, fireauth, firebasestore } from '../firebase/firebase';
 
 
 
 export const fetchApartments = () => (dispatch) => {
     dispatch(apartmentsLoading(true));
-
-
-    return firestore.collection('dishes').get()
-        .then(snapshot => {
-            let dishes = [];
-            snapshot.forEach(doc => {
-                const data = doc.data()
-                const _id = doc.id
-                dishes.push({ _id, ...data });
-            });
-            return dishes;
+    return fetch('http://localhost:4000/apartments', { method: 'GET' })
+        .then(response => response.json())
+        .then(result => {
+            return result
         })
-        .then(dishes => dispatch(addDishes(dishes)))
-        .catch(error => dispatch(dishesFailed(error.message)));
+        .then(apartments => dispatch(addApartments(apartments)))
+        .catch(error => dispatch(apartmentsFailed(error.message)));
 }
+
 
 export const apartmentsLoading = () => ({
     type: ActionTypes.APARTMENTS_LOADING
@@ -28,4 +21,9 @@ export const apartmentsLoading = () => ({
 export const apartmentsFailed = (errmess) => ({
     type: ActionTypes.APARTMENTS_FAILED,
     payload: errmess
+});
+
+export const addApartments = (apartments) => ({
+    type: ActionTypes.ADD_APARTMENTS,
+    payload: apartments
 });

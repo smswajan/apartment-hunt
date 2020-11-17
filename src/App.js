@@ -6,6 +6,7 @@ import { ConfigureStore } from './Redux/configureStore';
 const store = ConfigureStore();
 
 function App() {
+  console.log(store.getState());
   return (
     <>
       <Provider store={store}>
