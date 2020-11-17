@@ -17,7 +17,7 @@ const Main = () => {
                             <MainNavbar />
                             <PageHome />
                         </Route>
-                        <Route exact path="/home-details">
+                        <Route exact path="/apartments/:id">
                             <MainNavbar />
                             <PageHomeDetails />
                         </Route>
