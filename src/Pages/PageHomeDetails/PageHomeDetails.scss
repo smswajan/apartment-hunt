@@ -1,0 +1,11 @@
+.hero-apartment {
+    background: linear-gradient(rgba(39, 39, 39, 0.65), rgba(41, 41, 41, 0.75)),
+        url("./hero-bg.png") no-repeat left top;
+    // background-image: url("./hero-bg.png"), linear-gradient(#eb01a5, #d13531);
+    padding: 96px 0;
+    background-size: cover;
+    background-position: center center;
+}
+.bg-li {
+    background-color: #f4f4f4;
+}
