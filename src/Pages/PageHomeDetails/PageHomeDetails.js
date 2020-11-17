@@ -3,10 +3,13 @@ import { Button, Col, Container, Jumbotron, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import ImgAp from "./hero-bg01.png"
 import "./PageHomeDetails.scss"
+import { useForm } from 'react-hook-form';
+import { baseURL } from '../../shared/baseURL';
+
 const PageHomeDetails = () => {
     const { id } = useParams();
     const [houseDetails, setHouseDetails] = useState({});
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetch('http://localhost:4000/apartments', { method: 'GET' })
             .then(response => response.json())
@@ -16,6 +19,25 @@ const PageHomeDetails = () => {
                 setLoading(false)
             })
     }, [])
+    const { register, handleSubmit } = useForm();
+    const handleFormSubmit = (data, e) => {
+        console.log(data);
+        data.status = "Pending";
+        if (houseDetails) {
+            data.apartment = houseDetails;
+            console.log(data);
+        }
+        fetch(`${baseURL}/add-booking`, {
+            headers: { "Content-Type": "application/json" },
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => {
+                e.target.reset()
+            })
+            .catch(err => console.log(err))
+    }
     return (
         <>
             <div className="hero-apartment">
@@ -36,12 +58,12 @@ const PageHomeDetails = () => {
                         <p>{houseDetails.propertyDetails} </p>
                     </Col>}
                     <Col md="4" className="">
-                        <form className="py-5 bg-li p-4">
-                            <input type="text" className="form-control mb-3" placeholder="Full Name" />
-                            <input type="tel" className="form-control mb-3" placeholder="Phone No" />
-                            <input type="email" className="form-control mb-3" placeholder="Email Address" />
-                            <textarea name="" className="form-control mb-3" cols="30" rows="5" placeholder="Message"></textarea>
-                            <button className="btn btn-primary btn-block">Request Booking</button>
+                        <form onSubmit={handleSubmit(handleFormSubmit)} className="py-5 bg-li p-4">
+                            <input name="fullName" type="text" className="form-control mb-3" placeholder="Full Name" ref={register({ required: true })} />
+                            <input name="phone" type="tel" className="form-control mb-3" placeholder="Phone No" ref={register({ required: true })} />
+                            <input name="email" type="email" className="form-control mb-3" placeholder="Email Address" ref={register({ required: true })} />
+                            <textarea name="description" className="form-control mb-3" cols="30" rows="5" placeholder="Description" ref={register({ required: true })} ></textarea>
+                            <button type="submit" className="btn btn-primary btn-block">Request Booking</button>
                         </form>
 
                     </Col>

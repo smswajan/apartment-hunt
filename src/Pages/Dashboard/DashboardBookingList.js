@@ -5,6 +5,7 @@ import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar/Dashbo
 import SectionSpinner from '../../Components/SectionSpinner/SectionSpinner';
 import { useAuth } from '../../Hooks/useAuth';
 import { baseURL } from '../../shared/baseURL';
+import ServiceRow from './ServiceRow';
 
 const DashboardBookingList = () => {
     const [bookings, setBookings] = useState([]);
@@ -34,6 +35,7 @@ const DashboardBookingList = () => {
             fetch(`${baseURL}/bookings`, { method: 'GET' })
                 .then(response => response.json())
                 .then(result => {
+                    console.log(result);
                     setBookings(result);
                     setLoading(false)
                 })
@@ -61,7 +63,7 @@ const DashboardBookingList = () => {
                                     <div className="col-3"><span className="text-secondary">Product Details</span> </div>
                                     <div className="col-2"><span className="text-secondary">Status</span> </div>
                                 </div>}
-                                {/* {orders && orders.map(item => <AdminServiceListItem orderDetails={item} key={item._id} />)} */}
+                                {bookings && bookings.map(item => <ServiceRow bookingDetails={item} key={item._id} />)}
 
                             </div>
                         </div>

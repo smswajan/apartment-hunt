@@ -14,6 +14,7 @@ const PageMyBookings = () => {
                 setLoading(false)
             })
     }, [])
+
     return (
         <div>
             <div className="hero-apartment">
@@ -22,7 +23,7 @@ const PageMyBookings = () => {
             <section className="bg-li py-5">
                 <Container>
                     <Row>
-                        {!loading && bookings.map(item => <BookingCard details={item} />)}
+                        {!loading && bookings.map(item => <BookingCard bookingDetails={item} />)}
                     </Row>
                 </Container>
             </section>

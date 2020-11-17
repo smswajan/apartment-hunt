@@ -6,15 +6,22 @@ import { FaBath } from "react-icons/fa"
 import { Link } from 'react-router-dom';
 
 
-const BookingCard = ({ details }) => {
-    console.log(details);
+const BookingCard = ({ bookingDetails }) => {
+    const details = bookingDetails.apartment;
+    const bookingStatus = bookingDetails.status;
+    const textClass = bookingStatus === "Pending" ? "danger" : bookingStatus === "OnGoing" ? "warning" : "success"
+
     return (
         <>
             <div className="col-md-4 mb-4">
                 <div className="house-card">
                     <img className="w-100 cardImg" src={details.icon} alt="" />
                     <div className="px-4 py-3 bg-white">
+                        <div className="d-flex justify-content-end">
+                            <button className={"btn btn-sm  btn-outline-" + textClass} >{bookingDetails.status} </button>
+                        </div>
                         <h5 className="text-dark font-weight-bold">{details.title}</h5>
+
                         <p className="text-secondary mb-1 mt-3">
                             <FaMapMarkerAlt /> {" "} {details.address}
                         </p>
